@@ -11,7 +11,7 @@ import CoffeeMachine.States.ReadyForSelection;
 public class CoffeeMachine {
 
     private ICoffeMachineState coffeemachineState;
-    public static int num_of_outlets = 4;
+    public static int num_of_outlets = 3;
     public static ExecutorService executorService = Executors.newFixedThreadPool(num_of_outlets);
     public static DispensePermit permits = new DispensePermit(num_of_outlets);
     Inventory inventory = new Inventory();
