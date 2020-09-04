@@ -23,23 +23,25 @@ public class DispenseOps implements Runnable {
     public void run() {
 
         try {
-            Thread.currentThread();
-            Thread.sleep(2000); // delay added to show parallel processing and replicate processing time
+
             boolean dispense = inventory.checkQuantityOfIngredient(beverage); // checking inventory. Will dispense iff
                                                                               // ingredients are sufficient
 
             if (dispense) {
 
                 this.inventory.updateInventory(beverage); // pulling items from the invetory & updating
-                System.out.println("***** " + beverage.getName() + " prepared *****\n");
 
+                Thread.currentThread();
+                Thread.sleep(2000); // delay added to show parallel processing and replicate processing time
+                System.out.println("***** " + beverage.getName() + " prepared *****\n");
             }
+
+            CoffeeMachine.permits.complete();
 
         } catch (Exception e) {
             e.printStackTrace();
-        } finally {
+            CoffeeMachine.permits.complete();
 
-            CoffeeMachine.permits.complete(); // releasing permit to accept new orders
         }
     }
 

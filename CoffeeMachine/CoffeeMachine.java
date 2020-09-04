@@ -59,7 +59,7 @@ public class CoffeeMachine {
             this.coffeemachineState.dispenseBeverage(selectedBeverages);
 
         else {
-            System.out.println("No outlet available!Try after sometime!");
+            System.out.println("All outlets busy! Try after sometime!");
             coffeemachineState.selectBeverages();
 
         }

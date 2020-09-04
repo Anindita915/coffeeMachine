@@ -41,21 +41,23 @@ public class FillIngredients implements ICoffeMachineState {
         for (InvIngredients ing : Inventory.getInvIngredients()) {
 
             if (ing.lowSupply || ing.getQuantity() < ing.getMin_quantity()) {
-                int recommendedQty = (ing.getMin_quantity() - ing.getQuantity()) + ing.getMin_quantity();
+                int minrecommendedQty = (ing.getMin_quantity() - ing.getQuantity());
+                int maxReccomQty = ing.getMax_quantity() - ing.getQuantity();
                 System.out.println("Enter quantity to be added for: " + ing.getName()
-                        + " Recommended quantity, at least: " + recommendedQty);
+                        + " Recommended quantity, Minimum: " + minrecommendedQty + ", Maximum: " + maxReccomQty);
 
                 try {
+
                     opt = scanner.nextInt();
 
-                    if (opt != 0 && opt > 0) {
+                    if (opt > 0 && opt <= maxReccomQty) {
                         inventory.addIngredient(opt, ing);
 
                     } else if (opt == 0)
                         continue;
 
                     else
-                        System.out.println("Please enter positive values for quantity");
+                        System.out.println("Please enter positive values for quantity less than recommended max value");
 
                 } catch (Exception ex) {
                     System.out.println("Invalid Input");

@@ -31,7 +31,7 @@ public class ReadyForSelection implements ICoffeMachineState {
     public void selectBeverages() {
         int selectedOption = -1;
 
-        System.out.println("\nPick your beverages (1,2,3..):");
+        System.out.println("\nPick your beverages (1,2..." + inventory.getBeverages().size() + "):");
 
         int i = 1;
         for (Beverages beverage : inventory.getBeverages()) {
@@ -63,7 +63,7 @@ public class ReadyForSelection implements ICoffeMachineState {
                     if (curr != 0 && curr <= inventory.getBeverages().size())
                         selectedBeverages.add(inventory.getBeverages().get(curr - 1));
 
-                    else if (curr == 0) {
+                    else if (curr == 0 && j == 0) {
                         selectedOption = 0;
                         break;
                     } else
@@ -74,7 +74,7 @@ public class ReadyForSelection implements ICoffeMachineState {
 
             // Option 0 will navigate the state to refill where on can replenish the
             // inventory
-            if (selectedOption == 0) {
+            if (selectedOption == 0 && inventory.getlowSupply()) {
                 coffeeMachineState.setCoffeemachineState(new FillIngredients(coffeeMachineState));
                 coffeeMachineState.refillIngredients();
             }

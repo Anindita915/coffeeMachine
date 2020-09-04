@@ -135,9 +135,9 @@ public class Inventory {
     // Initializing inventory with mock values
     public static void initialize() {
 
-        invIngredients = Arrays.asList(new InvIngredients("hot_water", 400, 400),
-                new InvIngredients("hot_milk", 400, 400), new InvIngredients("ginger_syrup", 30, 30),
-                new InvIngredients("sugar_syrup", 30, 30), new InvIngredients("tea_leaves_syrup", 60, 60));
+        invIngredients = Arrays.asList(new InvIngredients("hot_water", 400, 400, 2000),
+                new InvIngredients("hot_milk", 400, 400, 2000), new InvIngredients("ginger_syrup", 30, 30, 500),
+                new InvIngredients("sugar_syrup", 30, 30, 500), new InvIngredients("tea_leaves_syrup", 60, 60, 1000));
 
         List<Ingredients> tea_ings = Arrays.asList(new Ingredients("hot_water", 100), new Ingredients("hot_milk", 100),
                 new Ingredients("ginger_syrup", 10), new Ingredients("sugar_syrup", 10),

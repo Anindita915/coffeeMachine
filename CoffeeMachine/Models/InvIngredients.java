@@ -3,12 +3,13 @@ package CoffeeMachine.Models;
 public class InvIngredients extends Ingredients {
 
     Integer min_quantity;
+    Integer max_quantity;
     public boolean lowSupply;
 
-    public InvIngredients(String n, Integer qty, Integer min) {
+    public InvIngredients(String n, Integer qty, Integer min, Integer max) {
         super(n, qty);
         min_quantity = min;
-
+        max_quantity = max;
     }
 
     @Override
@@ -36,19 +37,12 @@ public class InvIngredients extends Ingredients {
         this.lowSupply = lowSupply;
     }
 
-    @Override
-    public boolean equals(Object obj) {
+    public void setMax_quantity(Integer max_quantity) {
+        this.max_quantity = max_quantity;
+    }
 
-        if (obj.getClass() == Ingredients.class || obj.getClass() == InvIngredients.class) {
-            Ingredients ing = (Ingredients) obj;
-            if (this.name == ing.name)
-                return true;
-
-            else
-                return false;
-        } else
-
-            return false;
+    public Integer getMax_quantity() {
+        return max_quantity;
     }
 
 }
